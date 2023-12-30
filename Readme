@@ -1,3 +1,25 @@
+# nvim configuration
+
+### Introduction
+
+A starting point for Neovim that is:
+
+* Small
+* Single-file (with examples of moving to multi-file)
+* Documented
+* Modular
+
+This repo is meant to be used by **YOU** to begin your Neovim journey; remove the things you don't use and add what you miss.
+### Installation
+
+> **NOTE** 
+> [Backup](#FAQ) your previous configuration (if any exists)
+
+Requirements:
+* Make sure to review the readmes of the plugins if you are experiencing errors. In particular:
+  * [ripgrep](https://github.com/BurntSushi/ripgrep#installation) is required for multiple [telescope](https://github.com/nvim-telescope/telescope.nvim#suggested-dependencies) pickers.
+* See [Windows Installation](#Windows-Installation) if you have trouble with `telescope-fzf-native`
+
 Neovim's configurations are located under the following paths, depending on your OS:
 
 | OS | PATH |
@@ -12,3 +34,37 @@ Clone kickstart.nvim:
 - on Linux and Mac
 ```sh
 git clone https://github.com/arwysyah/nvim-linux-mint.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
+```
+
+- on Windows (cmd)
+```
+git clone https://github.com/arwysyah/nvim-linux-mint.git %userprofile%\AppData\Local\nvim\ 
+```
+
+- on Windows (powershell)
+```
+git clone https://github.com/arwysyah/nvim-linux-mint.git $env:USERPROFILE\AppData\Local\nvim\ 
+```
+
+
+### Post Installation
+
+Start Neovim
+
+```sh
+nvim
+```
+
+### Windows Installation
+
+Installation may require installing build tools, and updating the run command for `telescope-fzf-native`
+
+See `telescope-fzf-native` documentation for [more details](https://github.com/nvim-telescope/telescope-fzf-native.nvim#installation)
+
+This requires:
+
+- Install CMake, and the Microsoft C++ Build Tools on Windows
+
+```lua
+{'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+```
